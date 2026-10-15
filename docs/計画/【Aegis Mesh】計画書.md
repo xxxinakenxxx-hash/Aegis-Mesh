@@ -126,7 +126,7 @@ approval_required_if
 
 対象repository・branch・工程・変更範囲が明示されている場合、参照、作業branch作成、対象ファイル作成・更新、commit、通常push、PR作成を自動実行可とする。
 
-mergeは、対象工程で許可され、必須チェック合格、BLOCKEDなし、禁止事項抵触なしの場合のみ条件付き自動とする。
+mergeは、対象工程で許可され、必須チェック合格、BLOCKEDなし、未解決事項が完了条件を妨げておらず、禁止事項抵触なしの場合のみ条件付き自動とする。
 
 履歴破壊につながる操作、repositoryやbranchの削除、指定外repository・branch・ファイル変更は標準禁止とする。
 
