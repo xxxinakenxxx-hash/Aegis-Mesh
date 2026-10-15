@@ -292,13 +292,21 @@ Aegis Mesh案件では、文書の役割を混ぜない。
 ```text
 【Aegis Mesh】企画概要書.md
         ↓
-計画書
+【Aegis Mesh】計画書.md
         ↓
-開発工程表
+クロスレビュー
+        ↓
+【Aegis Mesh】未確定事項確認書.md
+        ↓
+必要な修正・確定
+        ↓
+【Aegis Mesh】開発工程表.md
+        ↓
+TASK_CURRENT.md
         ↓
 工程ごとの実装指示書
         ↓
-TASK_CURRENT.md
+実装
 ```
 
 | 文書 | 役割 |
@@ -506,7 +514,7 @@ Codex親
 
 GitHubはAegis Meshそのものではない。
 
-GitHubは、次を置く基盤候補である。
+GitHub `xxxinakenxxx-hash/Aegis-Mesh` を、正本・計画・TASK・証跡・変更履歴を保持する基盤として正式採用する。
 
 - Markdown正本
 - TASK
@@ -530,7 +538,7 @@ GitHubは、次を置く基盤候補である。
 
 ```text
 GitHub
-= 正本・変更・履歴・証跡を置く基盤候補
+= 正本・計画・TASK・証跡・変更履歴を保持する基盤
 
 Aegis Mesh
 = 状態遷移と実行条件を管制する仕組み
