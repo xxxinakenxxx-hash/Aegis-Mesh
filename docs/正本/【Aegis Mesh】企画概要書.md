@@ -666,12 +666,58 @@ force push、履歴改変、repository削除、branch削除、指定外repositor
 | DB / スキーマ変更 | 人間承認 |
 | 既存データ削除 | 原則禁止。専用の明示指示がある場合のみ実施可能 |
 
-## 15.3 TASK_CURRENT.mdの責任分担
+## 15.3 CHAT_CURRENT.md / TASK_CURRENT.md の責任分担
 
-- 管理責任：ChatGPT（設計・管理者AI）
-- 工程後の実績記入：Codex親 / 実装者AI
-- Aegis Mesh：TASK_CURRENTと実行状態の不整合を監視
+- `tasks/CHAT_CURRENT.md` の管理責任：ChatGPT（設計・管理者AI）
+- `tasks/TASK_CURRENT.md` の工程後実績記入：Codex親 / 実装者AI
+- Aegis Mesh：CHAT_CURRENT / TASK_CURRENT と実行状態・工程状態の不整合を監視
 - 人間：仕様判断・承認・差戻し
+
+### 15.3.1 CHAT_CURRENT更新ゲート
+
+ChatGPT（設計・管理者AI）による次の行為は、Aegis Mesh上の管理イベントとして扱う。
+
+- 判断
+- 指示
+- 差戻し
+- 工程判定
+
+管理イベントが発生した場合、`tasks/CHAT_CURRENT.md` の更新を必須処理とする。
+
+`tasks/CHAT_CURRENT.md` には最低限、次を記録する。
+
+- 日時
+- 種別：判断 / 指示 / 差戻し / 工程判定
+- 参照した正本と取得時点の版（取得できる場合はcommitまたはblob SHA）
+- 判断理由
+- 実施内容
+- 結果
+- 次の状態
+- 未決事項
+
+Aegis Meshは、管理イベントに対応するCHAT_CURRENT更新がGitHub上で成功したことを確認する。確認方法は、更新後のファイル内容とblob SHA等を用いて、更新前との差分が実在することを確認できる方式とする。
+
+次の操作は、対応するCHAT_CURRENT更新がGitHub上で確認できるまで実行してはならない。
+
+- 実装者AIへの指示送信
+- 差戻し実行
+- 管制状態の遷移
+- 次工程への移行
+- 完了確定
+
+したがって、基本原則は次とする。
+
+```text
+管理イベント発生
+  ↓
+CHAT_CURRENT更新
+  ↓
+GitHub上で更新成功確認
+  ↓
+指示送信 / 状態遷移 / 次工程移行 / 完了確定
+```
+
+CHAT_CURRENTが未更新、更新失敗、または更新確認不能の場合は、その管理イベントに基づく自動継続を停止する。
 
 ---
 
