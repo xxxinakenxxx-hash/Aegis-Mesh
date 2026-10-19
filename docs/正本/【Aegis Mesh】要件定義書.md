@@ -490,7 +490,7 @@ Aegis Meshは、Result Packet、Evidence、TASK_CURRENT、GitHub実体の不整�
 
 重要な外部作用は、LLMのプロンプト遵守だけでなく、Aegis Mesh側の実行ゲートで許可条件を検証すること。
 
-## REQ-AUTH-05 Codexデプロイ禁止
+## REQ-AUTH-05 Codexデプロイの現時点の禁止と将来解禁条件
 
 Codexはデプロイを実行できないこと。
 
