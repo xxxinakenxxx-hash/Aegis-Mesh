@@ -15,7 +15,7 @@ ChatGPT（設計・管理）とAegis Mesh（TypeScript／Vercel）、Codex親・
 | 人間 | ChatGPTと相談／Vercel管制画面で判断・確認 | 目的、重要な仕様・許可範囲、条件外操作、BLOCKEDの再開／中止 |
 | ChatGPT | Aegisへ管理判断・Work Contractを渡し、同じ管制基礎データを読む | 設計・管理・実行経路選択。直接の無条件実行権なし。CHAT_CURRENTゲートに従う |
 | Aegis Mesh | 契約、Context Version、状態、Evidence、許可、管理イベントを検証し実装経路と接続 | 非LLMゲートを維持。実装そのものはしない |
-| Codex親 | Aegisから許可済み仕事を受けてSubagentsへ分配・統合し結果返却 | 実装・テスト・許可済みGit操作。**デプロイ禁止** |
+| Codex親 | Aegisから許可済み仕事を受けてSubagentsへ分配・統合し結果返却 | 実装・テスト・許可済みGit操作。**現在はデプロイ禁止。将来は承認された5条件を満たした場合の解禁を目標とする** |
 | Subagents | Codex親の管理下で実務を実施 | 親と契約の範囲内。個々のAIに独自の無制限権限を付与しない |
 | Claude Code | ChatGPTが工程単位で選択した別の実装経路 | 実装等。条件が明示され満たされた時だけデプロイ可 |
 | GitHub | 正本、計画、TASK、証跡、commit、PR、履歴、状態管理のベース | 対象repo/branch/pathを検査し、古いSHAで上書きしない |
