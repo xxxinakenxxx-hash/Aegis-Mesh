@@ -102,3 +102,14 @@ AC-09：秘密情報をGitHubや外部提示結果に混入させない。
 既存の未確定事項確認書U-05〜U-11（ChatGPT読取、Codex親連携、Subagent取得、Claude Code接続、自動接続プロトコル、補助状態ストア、認証・秘密情報）を参照。接続経路・認証・秘密管理・起動方式・通知／更新頻度・重複実行防止は未確定で、仮の接続ができることを実装承認と扱わない。データ項目と永続化はデータ設計書、画面上の操作と表示は画面仕様・画面遷移書に従って後続で確定する。
 
 本書はクロスレビュー・承認前の正本案であり、既存の承認済み正本を変更するものではない。
+
+
+## 10. データ設計書との対応（2026-10-19追記）
+- `Project／Process／Task／ContextVersion／CanonicalReference／WorkContract` は、外部実行系へ送る対象の同一性・正本版・工程範囲を拘束する。GitHubの対象repo・path・SHAを無視した指示送信は許可しない。
+- `Actor／ActorAssignment／PermissionScope／Approval` を照合し、Codex親・Subagent・Claude Codeを混同せず、工程単位で実行権限を判定する。ActorAssignmentは無制限の権限付与ではない。
+- `ManagementEvent／ChatCommitVerification` をすべての管理後続操作のゲートとし、CHAT_CURRENTのGitHub再取得確認なしに後続実行を解放しない。
+- `ResultPacket／Evidence／TaskCurrentVerification／ControlStatus` を突き合わせ、実行報告のみで完了・デプロイ成功を確定しない。
+- `SharedControlView` は人間とChatGPTが**同じ基礎管制データ**を見るための論理出力であり、公開APIや保存先の方式を意味しない。
+- 論理レコードの物理保存方式・識別形式・保持条件は未確定（U-10／U-17）。接続・認証・公開APIの実方式はU-05〜U-11／U-15／U-16に従う。データ設計書の追加によって自動的に権限を拡張しない。
+
+根拠：`docs/正本/【Aegis Mesh】データ設計書.md` §1〜7。今回の追記はデータと外部連携の対応を明示するもので、前回版の権限モデルを変更しない。
